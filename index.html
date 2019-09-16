@@ -24,7 +24,7 @@
         const text = ['赤色、右手','赤色、左手','赤色、右足','赤色、左足','青色、右手','青色、左手','青色、右足','青色、左足','黄色、右手','黄色、左手','黄色、右足','黄色、左足','みどり色、右手','みどり色、左手','みどり色、右足','みどり色、左足'];
         const data = text;
         const viewText = document.querySelector('.view_text')
-        const speakBtn = document.querySelector('#speak-btn')
+        const voiceBtn = document.querySelector('#speak-btn')
         const pic = document.querySelector('.pic').querySelector('img');
         const voice = function(){
             // 発言を作成
@@ -42,11 +42,9 @@
                 }, 800);
             }
         }
-        var clerID;
-        speakBtn.addEventListener('click', function() {
+        voiceBtn.addEventListener('click', function() {
             voice()
-            var clerID = setInterval(voice,10000)
-            console.log(clerID)
+            setInterval(voice,10000)
         })
     </script>
 </body>
