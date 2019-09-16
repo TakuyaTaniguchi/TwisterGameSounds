@@ -12,7 +12,9 @@
     <div class="button">
         <button id="speak-btn">START</button>
         <button id="stop-btn">STOP</button>
+        <p>※音が出ます。</p>
     </div>
+    
     <div class="view">
         <h2 class="view_text"></h2>
         <div class="pic">
@@ -31,7 +33,6 @@
             const random = Math.floor( Math.random() * data.length );
             const uttr = new SpeechSynthesisUtterance(data[random]);
             const arrayNumber = data.indexOf(data[random]);
-            console.log(arrayNumber)
             pic.src = `./img/${arrayNumber}.png`;
             //option
             uttr.rate = -2
@@ -43,14 +44,16 @@
                 }, 800);
             }
         }
+        var clerID;
         speakBtn.addEventListener('click', function() {
             voice()
-            let clerID = setInterval(voice,10000)
+            var clerID = setInterval(voice,10000)
+            console.log(clerID)
         })
 
-          stopBtn.addEventListener('click', function(clerID){
+        stopBtn.addEventListener('click', function(){
             clearInterval(clerID);
-          })
+        })
     </script>
 </body>
 </html>
