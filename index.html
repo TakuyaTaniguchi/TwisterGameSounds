@@ -11,7 +11,6 @@
 <body>
     <div class="button">
         <button id="speak-btn">START</button>
-        <button id="stop-btn">STOP</button>
         <p>※音が出ます。</p>
     </div>
     
@@ -26,7 +25,6 @@
         const data = text;
         const viewText = document.querySelector('.view_text')
         const speakBtn = document.querySelector('#speak-btn')
-        const stopBtn = document.querySelector('#stop-btn')
         const pic = document.querySelector('.pic').querySelector('img');
         const voice = function(){
             // 発言を作成
@@ -49,10 +47,6 @@
             voice()
             var clerID = setInterval(voice,10000)
             console.log(clerID)
-        })
-
-        stopBtn.addEventListener('click', function(){
-            clearInterval(clerID);
         })
     </script>
 </body>
