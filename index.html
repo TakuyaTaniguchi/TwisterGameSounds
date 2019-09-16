@@ -10,24 +10,40 @@
 </head>
 <body>
     <button id="speak-btn">START</button>
+    <button id="stop-btn">STOP</button>
+    <div class="view">
+        <h2 class="view_text"></h2>
+    </div>
     <script>
-      const text = ['赤色、右手','赤色、左手','赤色、右足','赤色、左足','青色、右手','青色、左手','青色、右足','青色、左足','黄色、右手','黄色、左手','黄色、右足','黄色、左足','みどり色、右手','みどり色、左手','みどり色、右足','みどり色、左足'];
-      const data = text;
-      
-      const speakBtn = document.querySelector('#speak-btn')
-      speakBtn.addEventListener('click', function() {
-        // 発言を作成
-        const random = Math.floor( Math.random() * data.length );
-        const uttr = new SpeechSynthesisUtterance(data[random]);
-        //option
-        uttr.rate = -2
-        // 発言を2回再生
-        for (let index = 0; index < 2; index++) {
-            setTimeout(() => {
-                speechSynthesis.speak(uttr);
-            }, 800);
+        const text = ['赤色、右手','赤色、左手','赤色、右足','赤色、左足','青色、右手','青色、左手','青色、右足','青色、左足','黄色、右手','黄色、左手','黄色、右足','黄色、左足','みどり色、右手','みどり色、左手','みどり色、右足','みどり色、左足'];
+        const data = text;
+        // const obj = [{hge:['aaa']}]
+        // console.log(obj);
+        const viewText = document.querySelector('.view_text');
+        const speakBtn = document.querySelector('#speak-btn')
+        const stopBtn = document.querySelector('#stop-btn')
+        const voice = function(){
+            // 発言を作成
+            const random = Math.floor( Math.random() * data.length );
+            const uttr = new SpeechSynthesisUtterance(data[random]);
+            //option
+            uttr.rate = -2
+            // 発言を2回再生
+            viewText.textContent = data[random]
+            for (let index = 0; index < 2; index++) {
+                setTimeout(() => {
+                    speechSynthesis.speak(uttr);
+                }, 800);
+            }
         }
-      })
+        speakBtn.addEventListener('click', function() {
+            console.log('start')
+            let clerID = setInterval(voice,10000)
+        })
+
+        //   stopBtn.addEventListener('click', function(clerID){
+        //     clearInterval(clerID);
+        //   })
     </script>
 </body>
 </html>
